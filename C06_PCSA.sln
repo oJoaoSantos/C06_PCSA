@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D04_OOP_Abstaction", "D04_O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D05_OOP_Interfaces", "D05_OOP_Interfaces\D05_OOP_Interfaces.csproj", "{3239D908-8B89-491B-B6A0-28CAD28B014A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01_OOP_Interfaces_Veiculo", "E01_OOP_Interfaces_Veiculo\E01_OOP_Interfaces_Veiculo.csproj", "{40037DCB-FC14-43FA-88E5-2015735A3B1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3239D908-8B89-491B-B6A0-28CAD28B014A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3239D908-8B89-491B-B6A0-28CAD28B014A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3239D908-8B89-491B-B6A0-28CAD28B014A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40037DCB-FC14-43FA-88E5-2015735A3B1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40037DCB-FC14-43FA-88E5-2015735A3B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40037DCB-FC14-43FA-88E5-2015735A3B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40037DCB-FC14-43FA-88E5-2015735A3B1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
