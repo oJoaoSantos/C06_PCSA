@@ -77,5 +77,10 @@ namespace D00_Utility
         {
             Console.WriteLine("TestInternal");
         }
+
+        public static void BlockSeparator(int enters)
+        {
+            Console.WriteLine(new string('\n', enters));
+        }
     }
 }

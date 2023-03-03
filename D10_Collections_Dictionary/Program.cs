@@ -25,14 +25,49 @@ namespace D10_Collections_Dictionary
             #endregion
 
             #region Dictionary -> listar
-
+            ListDictionary(listCountries);
             #endregion
 
-            #region Dictionary -> pesquisar uma chave
+            #region Dictionary -> inserir um paiís se não existir na lista
+            // 1. Pesquisar
+            string key = "AN";
 
+            if (FindKey(listCountries, key))
+            {
+                // informa que existe
+                Console.WriteLine("País Duplicado");
+            }
+            else
+            {
+                // insere o novo par
+                InsertInDictionary(listCountries, key);
+                Console.WriteLine("\n\n");
+                ListDictionary(listCountries);
+            }
             #endregion
 
             Utility.TerminateConsole();
+        }
+
+        // Boa prática é criar classes novas
+        static void ListDictionary(Dictionary<string, string> list)
+        {
+            Utility.WriteTitle("Dictionary");
+            foreach (KeyValuePair<string, string> item in list)
+            {
+                Console.WriteLine($"{item.Key} - {item.Value}");
+            }
+        }
+
+        static bool FindKey(Dictionary<string, string> list, string key)
+        {
+            return list.ContainsKey(key);
+        }
+
+        static void InsertInDictionary(Dictionary<string, string> list, string key)
+        {
+            string newValue = $"{key}01"; // criar o novo Value
+            list.Add(key, newValue);
         }
     }
 }

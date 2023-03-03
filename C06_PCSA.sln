@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D09_CollectionsGeneric_Stac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D10_Collections_Dictionary", "D10_Collections_Dictionary\D10_Collections_Dictionary.csproj", "{5411006B-BD60-4620-AB96-709B64046B5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D11_CollectionsGeneric_IEnumerable", "D11_CollectionsGeneric_IEnumerable\D11_CollectionsGeneric_IEnumerable.csproj", "{1AA8691F-C821-4BF8-BFD9-3BE88463DBE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02_OOP_Collections_Car", "E02_OOP_Collections_Car\E02_OOP_Collections_Car.csproj", "{8B34BC57-DD40-47CA-87C4-DEE3893E75A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{5411006B-BD60-4620-AB96-709B64046B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5411006B-BD60-4620-AB96-709B64046B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5411006B-BD60-4620-AB96-709B64046B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA8691F-C821-4BF8-BFD9-3BE88463DBE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA8691F-C821-4BF8-BFD9-3BE88463DBE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA8691F-C821-4BF8-BFD9-3BE88463DBE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA8691F-C821-4BF8-BFD9-3BE88463DBE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B34BC57-DD40-47CA-87C4-DEE3893E75A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B34BC57-DD40-47CA-87C4-DEE3893E75A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B34BC57-DD40-47CA-87C4-DEE3893E75A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B34BC57-DD40-47CA-87C4-DEE3893E75A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
