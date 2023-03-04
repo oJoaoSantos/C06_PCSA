@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using D00_Utility;
+using E02_OOP_Collections_Car.Interfaces;
 
 namespace E02_OOP_Collections_Car.Classes
 {
-    internal class Car
+    internal class Car : ICar
     {
         #region Enumerations
         public enum EnumBrand
@@ -88,8 +86,8 @@ namespace E02_OOP_Collections_Car.Classes
 
         #region Methods
 
-        #region Ask and validate
-        internal int AskBrand()
+        #region Ask and validate Car Properties
+        public int AskBrand()
         {
             int count = 1, converted;
             bool success;
@@ -105,73 +103,155 @@ namespace E02_OOP_Collections_Car.Classes
                 string choice = Console.ReadLine();
                 success = int.TryParse(choice, out converted);
             } while (success == false);
-            
+
             return converted;
         }
-        internal int AskModel()
+        public int AskModel()
         {
-            int count = 1, choice;
+            int count = 1, converted;
+            bool success;
+
             foreach (EnumModel item in Enum.GetValues(typeof(EnumModel)))
             {
                 Console.WriteLine($"{count++} > {item}");
             }
-            Console.Write("\nChoice: ");
-            return choice = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("Choice: ");
+                string choice = Console.ReadLine();
+                success = int.TryParse(choice, out converted);
+            } while (success == false);
+            return converted;
         }
-        internal int AskColor()
+        public int AskColor()
         {
-            int count = 1, choice;
+            int count = 1, converted;
+            bool success;
             foreach (EnumColor item in Enum.GetValues(typeof(EnumColor)))
             {
                 Console.WriteLine($"{count++} > {item}");
             }
-            Console.Write("\nChoice: ");
-            return choice = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write("Choice: ");
+                string choice = Console.ReadLine();
+                success = int.TryParse(choice, out converted);
+            } while (success == false);
+            return converted;
         }
-        internal string AskLicensePlate()
+        public string AskLicensePlate()
         {
             Console.Write("LicensePlate: ");
             return Console.ReadLine();
         }
-        internal string AskDisplacement()
+        public int AskDisplacement()
         {
             Console.Write("Displacement: ");
-            return Console.ReadLine();
+            return int.Parse(Console.ReadLine());
         }
-        internal string AskVelocity()
-        {
-            Console.Write("Velocity: ");
-            return Console.ReadLine();
-        }
-        internal string AskRegistrationDate()
+        public DateTime AskRegistrationDate()
         {
             Console.Write("RegistrationDate: ");
-            return Console.ReadLine();
+            return Convert.ToDateTime(Console.ReadLine());
         }
         #endregion
 
-        internal void Stop()
+        #region Create New car
+        public void CreateNewCar(List<Car> car, EnumBrand? brand, EnumModel? model, EnumColor? color, string plate, int disp, DateTime regist)
         {
-
+            car.Add(new Car { Brand = brand, Model = model, Color = color, Displacement= disp, LicensePlate = plate, RegistrationDate = regist});
         }
+        #endregion
 
-        internal void Acelerate()
+        #region Stop
+        public void Stop(Car car, List<Car> list)
         {
-        
+            car.Velocity = 0;
         }
+        #endregion
 
-        internal void Decelerate() 
-        { 
-        
+        #region Acelerate
+        public void Acelerate(Car car, List<Car> list)
+        {
+            string comand = "w";
+            Utility.WriteTitle("Acelerate");
+            Utility.WriteSubTitle("Press 'W' to acelerate");
+            ShowVelocity(list);
+            do
+            {
+                comand = Console.ReadLine().ToLower();
+                if (comand == "w")
+                {
+                    car.Velocity++;
+                    ShowVelocity(list);
+                }
+            } while (comand == "w");
         }
+        #endregion
 
-        internal void ShowList(List<Car> list)
+        #region Decelerate
+        public void Decelerate(Car car, List<Car> list)
+        {
+            string comand = "s";
+            Utility.WriteTitle("Decelerate");
+            Utility.WriteSubTitle("Press 'S' to decelerate");
+            ShowVelocity(list);
+            do
+            {
+                comand = Console.ReadLine().ToLower();
+                if (comand == "s")
+                {
+                    car.Velocity--;
+                    ShowVelocity(list);
+                }
+            } while (comand == "s");
+
+        }
+        #endregion
+
+        #region Drive
+        public void Drive(Car car, List<Car> list)
+        {
+            string comand = "s";
+            Utility.WriteTitle("Drive");
+            Utility.WriteSubTitle("Press 'W' to acelerate or 'S' to decelerate");
+            ShowVelocity(list);
+            do
+            {
+                comand = Console.ReadLine().ToLower();
+                if (comand == "s")
+                {
+                    car.Velocity--;
+                    ShowVelocity(list);
+                }
+                else if (comand == "w")
+                {
+                    car.Velocity++;
+                    ShowVelocity(list);
+                }
+            } while (comand == "s" || comand == "w");
+
+        }
+        #endregion
+
+        #region Show Lists
+        public void ShowList(List<Car> list)
         {
             foreach (var item in list)
             {
-                Console.WriteLine($"Brand: {item.Brand}\t Model: {item.Model}\t LicensePlate: {item.LicensePlate}\t Displacement: {item.Displacement}\t Velocity: {item.Velocity}\t Registration Date: {item.RegistrationDate}");
+                Console.WriteLine($"Brand: {item.Brand}\t Model: {item.Model}\t LicensePlate: {item.LicensePlate}\t Displacement: {item.Displacement}\t Registration Date: {item.RegistrationDate.ToShortDateString()}");
             }
         }
+        public void ShowVelocity(List<Car> list)
+        {
+            foreach (var item in list)
+            {
+                Console.WriteLine($"Velocity: {item.Velocity}");
+            }
+        }
+        #endregion
+
+
         #endregion
     }
 }
