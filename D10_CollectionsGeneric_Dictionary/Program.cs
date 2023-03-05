@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using D00_Utility;
 
-namespace D10_Collections_Dictionary
+namespace D10_CollectionsGeneric_Dictionary
 {
     internal class Program
     {

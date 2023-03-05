@@ -52,16 +52,17 @@ namespace D00_Utility
 
             // v3 Mais otimizado
 
-            return value == 0;
+            return value != 0;
         }
 
         public static bool ValidateStringDouble(string value)
         {
+            return double.TryParse(value, out double valueConverted);
+        }
 
-            double valueConverted;
-
-            return double.TryParse(value, out valueConverted);
-
+        public static bool ValidateStringInt(string value)
+        {
+            return int.TryParse(value, out int valueConverted);
         }
 
         public static bool ValidateNumberDouble(string value)
