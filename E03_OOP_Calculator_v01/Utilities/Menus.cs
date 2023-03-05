@@ -1,11 +1,6 @@
 ﻿using D00_Utility;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace E03_OOP_Calculator_v01
 {
