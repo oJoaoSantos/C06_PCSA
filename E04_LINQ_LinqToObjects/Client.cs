@@ -7,7 +7,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E04_LINQ_LinkToObjects
+namespace E04_LINQ_LinqToObjects
 {
     internal class Client
     {

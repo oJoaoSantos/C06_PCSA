@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using D00_Utility;
 
-namespace E04_LINQ_LinkToObjects
+namespace E04_LINQ_LinqToObjects
 {
     internal class Program
     {

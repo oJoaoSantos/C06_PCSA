@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03_OOP_Calculator_v01", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D12_Linq", "D12_Linq\D12_Linq.csproj", "{4A8A268C-3EEB-4D3B-989A-CAC9113E16B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04_LINQ_LinkToObjects", "E04_LINQ_LinkToObjects\E04_LINQ_LinkToObjects.csproj", "{8FB2E402-1FDD-4A78-80AF-DAA3A1CC0F4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04_LINQ_LinqToObjects", "E04_LINQ_LinqToObjects\E04_LINQ_LinqToObjects.csproj", "{8FB2E402-1FDD-4A78-80AF-DAA3A1CC0F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
