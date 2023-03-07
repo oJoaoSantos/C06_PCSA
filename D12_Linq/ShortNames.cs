@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -41,33 +42,47 @@ namespace D12_Linq
             }
         }
 
-        public static int FindShortName(List<string> names)
+        public static void ListShortNamesMethod(List<string> names)
         {
-            List<int> lenghts = new List<int>();
-            
-            foreach (var item in names)
+            List<string> filteredNames = names
+                .Where(n => n.Length <= names.Min(x => x.Length)).ToList();
+            Utility.BlockSeparator(2);
+            Utility.WriteTitle("Short Names Method Sintax");
+
+            foreach (var item in filteredNames)
             {
-                lenghts.Add(item.Length);
+                Console.WriteLine(item);
             }
-
-            //foreach (var item in lenghts)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-            int minLenghtIndex = lenghts.Min();
-            return minLenghtIndex;
         }
 
-        public static void ListShortNames(List<string> names, int min)
-        {
-            Utility.BlockSeparator(2);
-            Utility.WriteTitle("Short Names");
-            var shortNames = names
-                .Where(name => name.Length == min)
-                .OrderBy(name => name);
+        //v1
 
-            foreach (var item in shortNames)
+        //public static void ListShortNamesQuery(List<string> names)
+        //{
+        //    var filteredNames = from name in names
+        //                        where name1.Length <= names.Min(name2 => name2.Length)
+        //                        select name1;
+
+        //    Utility.BlockSeparator(2);
+        //    Utility.WriteTitle("Short Names Query Sintax");
+        //    Console.WriteLine(names.Min());
+        //    foreach (var item in filteredNames)
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //}
+
+        //v2
+        public static void ListShortNamesQuery(List<string> names)
+        {
+            var filteredNames = from name1 in names
+                                where name1.Length == (from name2 in names select name2.Length).Min()
+                                select name1;
+
+            Utility.BlockSeparator(2);
+            Utility.WriteTitle("Short Names Query Sintax");
+            Console.WriteLine(names.Min());
+            foreach (var item in filteredNames)
             {
                 Console.WriteLine(item);
             }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A8A268C-3EEB-4D3B-989A-CAC9113E16B2}</ProjectGuid>
+    <ProjectGuid>{8FB2E402-1FDD-4A78-80AF-DAA3A1CC0F4A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>D12_Linq</RootNamespace>
-    <AssemblyName>D12_Linq</AssemblyName>
+    <RootNamespace>E04_LINQ_LinkToObjects</RootNamespace>
+    <AssemblyName>E04_LINQ_LinkToObjects</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelloWorld.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RandomNumbers.cs" />
-    <Compile Include="ShortNames.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

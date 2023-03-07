@@ -13,20 +13,32 @@ namespace D12_Linq
         static void Main(string[] args)
         {
             Utility.SetUniCodeConsole();
-
+            
+            #region Hello World
             HelloWorld helloWorldSintax = new HelloWorld();
 
             helloWorldSintax.HelloWorldMethodSintax();
-            
-            helloWorldSintax.HelloWorldQuerySintax();
 
+            helloWorldSintax.HelloWorldQuerySintax();
+            #endregion
+
+            #region Short Names
             List<string> names = ShortNames.CreateNames();
-            
+
             ShortNames.ListNames(names);
 
-            int min = ShortNames.FindShortName(names);
+            ShortNames.ListShortNamesMethod(names);
 
-            ShortNames.ListShortNames(names, min);
+            ShortNames.ListShortNamesQuery(names);
+            #endregion
+
+            #region Random Numbers
+            List<int> numbers = RandomNumbers.CreateNumbers();
+
+            RandomNumbers.ListNumbers(numbers);
+
+            RandomNumbers.ListNumbersMethod(numbers);
+            #endregion
 
             Utility.TerminateConsole();
         }
