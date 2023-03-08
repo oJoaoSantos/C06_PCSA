@@ -1,11 +1,13 @@
-﻿using System;
+﻿using D00_Utility;
+using E04_LINQ_LinqToObjects;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using D00_Utility;
 
-namespace E04_LINQ_LinqToObjects
+namespace E04_LINQ_LinqToObjects_v2
 {
     internal class Program
     {
@@ -13,12 +15,11 @@ namespace E04_LINQ_LinqToObjects
         {
             Utility.SetUniCodeConsole();
 
-
             #region Creante and Show Lists
-            List<Client> clients = Client.CreateClients();
             List<City> cities = City.CreateCities();
-            Client.ShowClients(clients);
+            List<Client> clients = Client.CreateClients(cities);
             City.ShowCities(cities);
+            Client.ShowClients(clients);
             #endregion
 
             #region 2. Implementar com method e query syntax as seguintes consultas LINQ
@@ -26,7 +27,7 @@ namespace E04_LINQ_LinqToObjects
             #region 2.1. O nome dos clientes da cidade de Londres. 
             #region Sintax
             var filtered2_1 = clients
-                .Where(client => client.CityName == "Londres")
+                .Where(client => client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres"))
                 .Select(client => client.Name);
 
             Utility.BlockSeparator(1);
@@ -38,14 +39,22 @@ namespace E04_LINQ_LinqToObjects
             #endregion
 
             #region Query
+            var filtered2_1q = from client in clients
+                               where client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres")
+                               select client.Name;
 
+            Utility.WriteTitle("2.1. Results Query");
+            foreach (var item in filtered2_1q)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
             #endregion
 
             #region 2.2. O nome dos clientes da cidade de Lisboa ou de Madrid. 
             #region Sintax
             var filtered2_2 = clients
-                .Where(client => client.CityName == "Lisboa" || client.CityName == "Madrid")
+                .Where(client => client.CityName == cities.FirstOrDefault(city => city.CityName == "Lisboa") || client.CityName == cities.FirstOrDefault(city => city.CityName == "Madrid"))
                 .Select(client => client.Name);
 
             Utility.BlockSeparator(1);
@@ -57,7 +66,15 @@ namespace E04_LINQ_LinqToObjects
             #endregion
 
             #region Query
+            var filtered2_2q = from client in clients
+                               where client.CityName == cities.FirstOrDefault(city => city.CityName == "Lisboa") || client.CityName == cities.FirstOrDefault(city => city.CityName == "Madrid")
+                               select client.Name;
 
+            Utility.WriteTitle("2.2. Results Query");
+            foreach (var item in filtered2_2q)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
             #endregion
 
@@ -75,26 +92,33 @@ namespace E04_LINQ_LinqToObjects
             #endregion
 
             #region Query
+            var filtered2_3q = from client in clients
+                               where client.Age > 18
+                               select client; // dúvida: pode concatenar-se logo no LINQ?
 
+            Utility.WriteTitle("2.3. Results Query");
+            foreach (var item in filtered2_3q)
+            {
+                Console.WriteLine($"{item.Name} - {item.Age} ");
+            }
             #endregion
             #endregion
 
             #region 2.4.  O nome dos clientes e o país de origem.
             #region Sintax
-
+            
             #endregion
 
             #region Query
-            var filtered2_4q = from client in clients
-                               join citie in cities
-                               on client.CityName equals citie.CityName
+            var filtered2_4q = from city in cities
+                               join client in clients
+                               on city.Id equals client.Id
                                select new
                                {
                                    client.Name,
-                                   citie.CountryName
+                                   city.CountryName
                                };
 
-            Utility.BlockSeparator(1);
             Utility.WriteTitle("2.4. Results Query");
             foreach (var item in filtered2_4q)
             {
@@ -106,7 +130,7 @@ namespace E04_LINQ_LinqToObjects
             #region 2.5.  O número de clientes que mora em Londres. 
             #region Sintax
             var filtered2_5 = clients
-                .Where(client => client.CityName == "Londres");
+                .Where(client => client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres"));
 
             Utility.BlockSeparator(1);
             Utility.WriteTitle("2.5. Results Sintax");
@@ -114,19 +138,23 @@ namespace E04_LINQ_LinqToObjects
             #endregion
 
             #region Query
+            var filtered2_5q = from client in clients
+                               where client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres")
+                               select client;
 
+            Utility.WriteTitle("2.5. Results Query");
+            Console.WriteLine(filtered2_5q.Count());
             #endregion
             #endregion
 
             #region 2.6.  O cliente mais novo que mora em Londres.
             #region Sintax
             var filtered2_6 = clients                                               // otimizar
-                .Where(client => client.CityName == "Londres");
+                .Where(client => client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres"));
 
             var filtered2_6_1 = filtered2_6
                 .Where(client => client.Age == filtered2_6.Min(c => c.Age))
                 .Select(client => client.Name);
-
 
             Utility.BlockSeparator(1);
             Utility.WriteTitle("2.6. Results Sintax");
@@ -137,12 +165,23 @@ namespace E04_LINQ_LinqToObjects
             #endregion
 
             #region Query
+            var filtered2_6q = from client in clients                                               // otimizar
+                               where client.CityName == cities.FirstOrDefault(city => city.CityName == "Londres")
+                               select client;
 
+            var filtered2_6_1q = from client in filtered2_6q
+                                 where client.Age == filtered2_6.Min(c => c.Age)
+                                 select client.Name;
+
+            Utility.WriteTitle("2.6. Results Query");
+            foreach (var item in filtered2_6_1q)
+            {
+                Console.WriteLine(item);
+            }
             #endregion
             #endregion
 
             #endregion
-
 
             Utility.TerminateConsole();
         }
