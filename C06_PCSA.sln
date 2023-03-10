@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04_LINQ_LinqToObjects", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04_LINQ_LinqToObjects_v2", "E04_LINQ_LinqToObjects_v2\E04_LINQ_LinqToObjects_v2.csproj", "{11E7E15B-A8DF-4128-AE8A-0C7BA55616F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05_LINQ_LinqMethods", "E05_LINQ_LinqMethods\E05_LINQ_LinqMethods.csproj", "{94E7DAF3-ABB1-4C46-94FC-3C586DB36CA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E06_OOP_CacaTesouro", "E06_OOP_CacaTesouro\E06_OOP_CacaTesouro.csproj", "{1972A8EB-9DD4-450D-BF23-97935491ECC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{11E7E15B-A8DF-4128-AE8A-0C7BA55616F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E7E15B-A8DF-4128-AE8A-0C7BA55616F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E7E15B-A8DF-4128-AE8A-0C7BA55616F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E7DAF3-ABB1-4C46-94FC-3C586DB36CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E7DAF3-ABB1-4C46-94FC-3C586DB36CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E7DAF3-ABB1-4C46-94FC-3C586DB36CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E7DAF3-ABB1-4C46-94FC-3C586DB36CA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1972A8EB-9DD4-450D-BF23-97935491ECC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1972A8EB-9DD4-450D-BF23-97935491ECC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1972A8EB-9DD4-450D-BF23-97935491ECC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1972A8EB-9DD4-450D-BF23-97935491ECC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

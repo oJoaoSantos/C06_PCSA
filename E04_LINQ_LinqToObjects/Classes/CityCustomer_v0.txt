@@ -1,0 +1,112 @@
+﻿using D00_Utility;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace E04_Linq_LinqToObjects
+{
+
+    public class CityCustomer
+    {
+
+        #region Public lists - declarados a nível da classe. Evitar! Usar a lista como argumento a ser passado pelos métodos
+        List<City> listCities = new List<City>();
+        List<Customer> listCustomers = new List<Customer>();
+        IEnumerable listFiltered;
+        #endregion
+
+        #region Cities and Customers        
+        public void CreateCitiesCustomers()
+        {
+
+            // Table 1
+            listCities.Add(new City { Location = "Porto", Country = "Portugal" });
+            listCities.Add(new City { Location = "Londres", Country = "Inglatera" });
+            listCities.Add(new City { Location = "Paris", Country = "França" });
+            listCities.Add(new City { Location = "Madrid", Country = "Espanha" });
+
+            // Table n
+            listCustomers.Add(new Customer { Name = "Amália", Location = listCities.FirstOrDefault(c => c.Location == "Porto"), Age = 35 });
+            listCustomers.Add(new Customer { Name = "John", Location = listCities.FirstOrDefault(c => c.Location == "Londres"), Age = 35 });
+            listCustomers.Add(new Customer { Name = "Charles", Location = listCities.FirstOrDefault(c => c.Location == "Londres"), Age = 53 });
+            listCustomers.Add(new Customer { Name = "Lucy", Location = listCities.FirstOrDefault(c => c.Location == "Paris"), Age = 21 });
+            listCustomers.Add(new Customer { Name = "Javi", Location = listCities.FirstOrDefault(c => c.Location == "Madrid"), Age = 14 });
+
+        }
+        #endregion
+
+        #region List
+        public void ListData(string title, string separator = "\n\n")
+        {
+
+            Utility.BlockSeparator(separator);
+            Utility.WriteTitle(title);
+
+            foreach (var item in listFiltered)
+            {
+                Console.WriteLine($"\t{item}\t");
+            }
+
+        }
+        #endregion
+
+        #region Answers - method syntax
+        // 1. Nome dos clientes de Londres
+        public void CitiesCustomersMethodSyntaxQuestion1()
+        {
+
+            listFiltered = listCustomers.Where(c => c.Location.Location == "Londres").Select(c => c.Name);
+
+        }
+
+        // 2. Nome dos clientes de Lisboa ou Madrid
+        public void CitiesCustomersMethodSyntaxQuestion2()
+        {
+
+            listFiltered = listCustomers.Where(c => c.Location.Location == "Lisboa" || c.Location.Location == "Madrid").Select(c => c.Name);
+
+        }
+
+        // 3. Pessoas com mais de 18 anos, ordenadas descendentemente pela idade (nome - idade)
+        public void CitiesCustomersMethodSyntaxQuestion3()
+        {
+
+            listFiltered = listCustomers.Where(c => c.Age > 18).OrderByDescending(c => c.Age).Select(c => $"{c.Name} - {c.Age}");
+
+        }
+
+        // 4. Nome dos clientes e país de origem
+        public void CitiesCustomersMethodSyntaxQuestion4()
+        {
+
+            listFiltered = listCustomers.Select(c => $"{c.Name}, {c.Location.Country}");
+
+        }
+
+        // 5. Número de clientes que moram em Londres
+        public void CitiesCustomersMethodSyntaxQuestion5()
+        {
+
+            Utility.BlockSeparator("\n\n");
+            Utility.WriteTitle("5. Número de clientes que moram em Londres");
+
+            int listFilteredCount = listCustomers.Where(c => c.Location.Location == "Londres").Count();
+
+            // Não posso usar o método para listar
+            Utility.WriteMessage($"\t{listFilteredCount}");
+
+        }
+
+        // 6. Cliente mais novo de Londres
+        public void CitiesCustomersMethodSyntaxQuestion6()
+        {
+
+            listFiltered = listCustomers.Where(c => c.Location.Location == "Londres").OrderBy(c => c.Age).Take(1).Select(s => s.Name); //.FirstOrDefault();
+
+        }
+        #endregion
+
+    }
+
+}
