@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using D00_Utility;
 
+// todo Ver deslocamento, o X e o Y não estão a atualizar.
+
 namespace E06_OOP_CacaTesouro
 {
     internal class Program
